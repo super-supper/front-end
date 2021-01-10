@@ -1,11 +1,21 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Link from "next/link";
+import Button from "@material-ui/core/Button";
+import { Container } from "@material-ui/core";
+
+import styles from "../styles/home.module.css";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <h1>welcome to super supper</h1>
-      <button>dashboard</button>
+      <div className={styles.heading}>
+        <h1>welcome to super supper</h1>
+        <Link href="/dashboard">
+          <Button variant="contained" color="primary">
+            dashboard
+          </Button>
+        </Link>
+      </div>
     </div>
-  )
+  );
 }
