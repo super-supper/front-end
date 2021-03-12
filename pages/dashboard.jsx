@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import Link from 'next/link'
-
-import styles from "../styles/dashboard.module.css";
-import FormControl from "@material-ui/core/FormControl";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import Link from 'next/link';
+import React, { useState } from "react";
+import Form from "../component/form";
+import styles from "../styles/dashboard.module.css";
+
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -29,22 +27,7 @@ export default function Dashboard() {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
-        <form>
-          <h1>How many days shall we plan for?</h1>
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={days}
-              onChange={handleChange}
-              label="Days"
-            >
-              <MenuItem value={5}>Five</MenuItem>
-              <MenuItem value={7}>Seven</MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-            </Select>
-          </FormControl>
-        </form>
+        <Form/>
       </div>
       <div className={styles.footer}>
         <Link href="/">
