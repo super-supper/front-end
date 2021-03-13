@@ -14,6 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ShareIcon from '@material-ui/icons/Share';
 import clsx from 'clsx';
+import dayjs from 'dayjs';
 import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -39,13 +40,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RecipeCard = ({title, description, created, steps=[] }) => {
+const RecipeCard = ({ recipe }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const formatDate = (date) => dayjs(date).format('MMM D, YYYY')
 
   return (
     <Card className={classes.root}>
@@ -60,17 +63,16 @@ const RecipeCard = ({title, description, created, steps=[] }) => {
             <MoreVertIcon />
           </IconButton>
         }
-        title={title}
-        subheader={created}
+        title={recipe.title}
+        subheader= {formatDate(recipe.created_at)}
       />
       <CardMedia
         className={classes.media}
         image=""
-        title="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {description}
+          {recipe.description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -94,9 +96,9 @@ const RecipeCard = ({title, description, created, steps=[] }) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
-          {steps.map(step => {
+          {/* {steps.map(step => {
           return <Typography paragraph>{step.step}</Typography>
-            })}     
+            })}      */}
         </CardContent>
       </Collapse>
     </Card>
