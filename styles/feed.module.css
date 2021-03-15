@@ -1,7 +1,7 @@
 .container {
-    width: 90%;
+    width: 99%;
     margin: auto;
-    padding: 10px;
+    padding: 5vh;
     text-align: center;
   }
 
@@ -12,5 +12,12 @@
   align-content: flex-start;
   height: 100vh;
   margin: 10px;
+}
+
+.header {
+  background-color: rgb(192, 215, 252);
+  padding: 8px;
+  margin-bottom: 20px;
+  color: rgb(39, 39, 39)
 }
 

@@ -1,4 +1,5 @@
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import RecipeCard from '../../component/RecipeCard';
@@ -21,7 +22,11 @@ const Feed = () => {
 
     return (
     <div className={styles.container}>
-         <h1>Recipe Feed</h1>
+        <div className={styles.header}>
+         <Typography variant="h2" component="h2">
+         Recipe Feed
+        </Typography>
+        </div>
         <div className={styles.feed}>
             {!fetchedRecipes ? 
             <LinearProgress /> :
