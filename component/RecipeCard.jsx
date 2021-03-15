@@ -1,29 +1,27 @@
-import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import Collapse from '@material-ui/core/Collapse';
 import { red } from '@material-ui/core/colors';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import ShareIcon from '@material-ui/icons/Share';
-import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    width: '350px',
+    margin: '10px'
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    objectFit: 'contain',
+    width: '350px'
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -53,36 +51,35 @@ const RecipeCard = ({ recipe }) => {
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
+          <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
         }
         title={recipe.title}
         subheader= {formatDate(recipe.created_at)}
       />
-      <CardMedia
-        className={classes.media}
-        image=""
-      />
+ 
+        <CardMedia
+          className={classes.media}
+          image={recipe.image ? recipe.image :  "https://source.unsplash.com/featured/?food"}
+          />
+
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {recipe.description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
+       
+
+        {/* saving this so we can add a share feature someday :)  */}
+        {/* <IconButton aria-label="share">
           <ShareIcon />
-        </IconButton>
-        <IconButton
+        </IconButton> */}
+
+
+        {/* <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
           })}
@@ -91,16 +88,21 @@ const RecipeCard = ({ recipe }) => {
           aria-label="show more"
         >
           <ExpandMoreIcon />
-        </IconButton>
+        </IconButton> */}
+
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+
+      {/* this will be optional based on props */}
+
+      {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
-          {/* {steps.map(step => {
+          {steps.map(step => {
           return <Typography paragraph>{step.step}</Typography>
-            })}      */}
+            })}     
         </CardContent>
-      </Collapse>
+      </Collapse> */} 
+
     </Card>
   );
 }
