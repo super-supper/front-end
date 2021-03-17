@@ -32,7 +32,9 @@ const Feed = () => {
 				{!fetchedRecipes ? (
 					<LinearProgress />
 				) : (
-					recipes.map((item) => <RecipeCard key={item._id} recipe={item} />)
+					recipes.map((item) => (
+						<RecipeCard key={item.recipe_id} recipe={item} />
+					))
 				)}
 			</div>
 		</div>
